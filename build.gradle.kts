@@ -23,13 +23,6 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
-tasks.getByName<Jar>("jar") {
-    enabled = false
-    manifest {
-        attributes["Main-Class"] = "io.github.rafaeljpc.herokustudy.HerokuStudyApplicationKt"
-    }
-}
-
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
