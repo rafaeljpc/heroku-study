@@ -20,6 +20,12 @@ application {
     mainClass.set("io.github.rafaeljpc.herokustudy.HerokuStudyApplicationKt")
 }
 
+tasks.withType<Jar> {
+    manifest {
+        attributes["Main-Class"] = application.mainClass.get()
+    }
+}
+
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
