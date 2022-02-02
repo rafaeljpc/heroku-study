@@ -1,13 +1,22 @@
 package io.github.rafaeljpc.herokustudy.entity
 
+import org.springframework.data.domain.Persistable
 import javax.persistence.*
 
 @Entity
 @Table(name = "person", schema = "profile")
-data class Person(
-
+class Person(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
-    val name: String,
-    val email: String,
-)
+    private var id: Long? = null,
+    var name: String,
+    var email: String,
+) : Persistable<Long> {
+
+    override fun getId(): Long? = id
+
+    fun setId(value: Long) {
+        this.id = value
+    }
+
+    override fun isNew(): Boolean = null == id
+}

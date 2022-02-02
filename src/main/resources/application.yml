@@ -17,3 +17,6 @@ spring:
     minIdle: 2
     initialSize: 5
     removeAbandoned: true
+springdoc:
+  api-doc.path: /api-docs
+  swagger-ui.path: /api-docs.html

@@ -1,10 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "2.6.3"
-    id("io.spring.dependency-management") version "1.0.11.RELEASE"
     kotlin("jvm") version "1.6.10"
     kotlin("plugin.spring") version "1.6.10"
+    kotlin("plugin.noarg") version "1.6.10"
+    kotlin("plugin.allopen") version "1.6.10"
+    kotlin("plugin.jpa") version "1.6.10"
+    id("org.springframework.boot") version "2.6.3"
+    id("io.spring.dependency-management") version "1.0.11.RELEASE"
 }
 
 group = "io.github.rafaeljpc"
@@ -24,6 +27,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("org.postgresql:postgresql:42.3.+")
 
+    // Swagger
+    implementation("org.springdoc:springdoc-openapi-ui:1.5.+")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
@@ -35,5 +41,6 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.withType<Test> {
+    ignoreFailures = true
     useJUnitPlatform()
 }
